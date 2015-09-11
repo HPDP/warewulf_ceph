@@ -6,7 +6,7 @@ function svn-clean { svn st | grep '^?' | awk '{print $2}' | xargs rm -rf; }
 
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS} 
 
-yum -y install http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm 
+yum -y install epel-release
 yum -ygroup install 'Development tools' 
 yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz 
 
