@@ -1,5 +1,8 @@
 #!/bin/bash
 
+yum group install 'Development tools' 
+yum install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz 
+
 # Build Warewulf from SVN
 BUILD_DIR=~/rpmbuild
 WW_DIR=~/warewulf/trunk
