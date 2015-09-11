@@ -1,31 +1,32 @@
 #!/bin/bash
 
-function buildit { cd $1 && ./autogen.sh && make dist-gzip && make distcheck && cp -fa warewulf-*.tar.gz ~/rpmbuild/SOURCES/ && rpmbuild -bb ./*.spec; cd $OLDPWD; } 
+# Build Warewulf from SVN
+BUILD_DIR=~/rpmbuild
+WW_DIR=~/warewulf/trunk
+RPM_DIR=~/rpmbuild/RPMS/noarch
+function build_it { cd $1 && ./autogen.sh && make dist-gzip && make distcheck && cp -fa warewulf-*.tar.gz $2/SOURCES/ && rpmbuild -bb ./*.spec; }
 
-function svn-clean { svn st | grep '^?' | awk '{print $2}' | xargs rm -rf; } 
+cd /usr/include
+h2ph -al * sys/*
 
-mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS} 
+mkdir -p $BUILD_DIR/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
-yum -y install epel-release
-yum -ygroup install 'Development tools' 
-yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz 
+cd ~/
+mkdir ~/warewulf
+svn co https://warewulf.lbl.gov/svn/trunk/ ~/warewulf
 
-svn co https://warewulf.lbl.gov/svn/ warewulf 
-cd warewulf/trunk 
+build_it $WW_DIR/common $BUILD_DIR
+yum install -y $RPM_DIR/warewulf-common-*.el7.centos.noarch.rpm
 
-buildit common 
-yum install ~/rpmbuild/RPMS/noarch/warewulf-common-3.6.1-0.*.el7.centos.noarch.rpm 
+build_it $WW_DIR/provision $BUILD_DIR
 
-buildit provision 
-yum install ~/rpmbuild/RPMS/x86_64/warewulf-provision-3.6.1-0.*.el7.centos.x86_64.rpm ~/rpmbuild/RPMS/x86_64/warewulf-provision-server-3.6.1-0.*.el7.centos.x86_64.rpm 
+build_it $WW_DIR/cluster $BUILD_DIR
 
-buildit cluster 
-yum install ~/rpmbuild/RPMS/x86_64/warewulf-cluster-3.6.1-0.*.el7.centos.x86_64.rpm 
+build_it $WW_DIR/vnfs $BUILD_DIR
 
-buildit vnfs 
-yum install ~/rpmbuild/RPMS/noarch/warewulf-vnfs-3.6.1-0.*.el7.centos.noarch.rpm 
+# Build not working yet on el7
+#build_it $WW_DIR/ipmi $BUILD_DIR
 
-    # Build not working yet on el7 
-    #buildit ipmi 
+yum install -y $RPM_DIR/warewulf-*-*.el7.centos.*.rpm
 
-mkdir -p /var/chroots 
+
