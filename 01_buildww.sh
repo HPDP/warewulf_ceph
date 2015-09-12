@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#using centos 7
 yum -y group install 'Development tools' 
 yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz 
 yum -y install epel-release libselinux-devel libacl-devel libattr-devel
@@ -40,7 +41,6 @@ yum -y install json-c-devel json-devel sqlite-devel
 build_it $WW_DIR/monitor $BUILD_DIR
 yum -y install $RPM_DIR/x86_64/warewulf-monitor*.rpm
 
-# Build not working yet on el7
 build_it $WW_DIR/ipmi $BUILD_DIR
 yum -y install $RPM_DIR/x86_64/warewulf-ipmi*.rpm
 
