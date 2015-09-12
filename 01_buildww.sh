@@ -5,10 +5,6 @@
 sed -i 's+=enforcing+=disabled+g' /etc/selinux/config
 
 ## disable firewall
-#firewall-cmd --zone=public --add-port=6789/tcp --permanent
-#firewall-cmd --zone=public --add-port=6800-7100/tcp --permanent
-#firewall-cmd --reload
-systemctl disable firewalld
 
 ## ntp
 yum install -y ntp ntpdate ntp-doc
@@ -18,8 +14,6 @@ useradd ceph
 echo bwv988 | passwd ceph --stdin
 echo "ceph ALL = (root) NOPASSWD:ALL" | tee /etc/sudoers.d/ceph
 chmod 0440 /etc/sudoers.d/ceph
-## visudo to edit requiretty for allow sudo without passwd
-## edit /etc/sudoers to change this line to: Defaults:ceph !requiretty
 sed -i s'/Defaults    requiretty/Defaults:ceph    !requiretty'/g /etc/sudoers
 
 ## ceph repo, update all nodes
