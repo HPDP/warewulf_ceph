@@ -39,6 +39,6 @@ yum -y install $RPM_DIR/x86_64/warewulf-monitor*.rpm
 #build_it $WW_DIR/ipmi $BUILD_DIR
 #yum -y install $RPM_DIR/x86_64/warewulf-ipmi*.rpm
 
-
+rpm -qa | grep warewulf
 
 
