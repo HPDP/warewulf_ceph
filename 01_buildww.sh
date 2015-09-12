@@ -5,6 +5,7 @@
 sed -i 's+=enforcing+=disabled+g' /etc/selinux/config
 
 ## disable firewall
+systemctl disable firewalld
 
 ## ntp
 yum install -y ntp ntpdate ntp-doc
