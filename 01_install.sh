@@ -10,7 +10,7 @@ sed -i 's+=enforcing+=disabled+g' /etc/selinux/config
 systemctl disable firewalld
 
 ## ntp
-yum install -y ntp ntpdate ntp-doc
+yum install -y ntp ntpdate ntp-doc 
 systemctl enable ntpd
 
 useradd ceph
@@ -30,6 +30,10 @@ yum -y install ceph --disablerepo=epel
 chkconfig ceph on
 
 yum -y group install 'Development tools' 
-yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz 
+yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz dhcp
 yum -y install libselinux-devel libacl-devel libattr-devel
+
+service enable dhcpd rpcbind nfs-server
+
+reboot
 
