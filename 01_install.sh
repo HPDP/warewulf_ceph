@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #using centos 7
-hostnamectl set-hostname wulf.myceph --static
+hostnamectl set-hostname wulf.ceph --static
 
 ## disable selinux
 sed -i 's+=enforcing+=disabled+g' /etc/selinux/config
