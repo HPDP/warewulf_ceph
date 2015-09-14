@@ -15,3 +15,13 @@ EOF
 
 chmod 0600 ~/.my.cnf
 
+## edit /etc/warewulf/provision.conf, change eth1 to enp0s8, for centos-7
+## otherwise nfs-server and dhcpd fail
+sed -i '/network device/c\network device = enp0s8' /etc/warewulf/provision.conf
+
+## edit /etc/warewulf/vnfs.conf, uncomment hybridpath= ...
+echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
+sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
+
+wwinit ALL
+
