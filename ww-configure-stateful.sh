@@ -4,6 +4,7 @@
 #   Script to set up basic stateful provisioning with Warewulf.
 #   Adam DeConinck @ R Systems, 2011
 #   modified by Jimi Chu, Harvard Medical School 2015
+
 NODE=$1
 SWAPSIZE=$2
 DISK=$3
@@ -34,14 +35,13 @@ SWAPP=$DISK"2"
 ROOTP=$DISK"3"
 
 wwsh << EOF
-quiet
 object $NODE -s filesystems="mountpoint=/boot:dev=$BOOTP:type=xfs:size=350,mountpoint=swap,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=xfs:dev=$ROOTP:size=fill"
 object $NODE -s diskformat=$BOOTP,$SWAPP,$ROOTP
 object $NODE -s diskpartition=$DISK
 object $NODE -s bootloader=$DISK
 EOF
 
-
+echo
 echo " Make sure the VNFS for $NODE has a kernel and grub  "
 echo " installed!"
 echo " After you've provisioned $NODE, remember to do: "
