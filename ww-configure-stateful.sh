@@ -15,8 +15,7 @@ if [ -z "$NODE" ]; then
 	echo
 	echo "$0: Configure a node for stateful provisioning under Warewulf"
 	echo "Usage: $0 nodename [swap_in_mb disk]"
-	echo "If omitted, rootfs = fill, swap = $SWAPDEFAULT, and"
-    echo "disk = $DISKDEFAULT."
+	echo "If omitted, rootfs = fill, swap = $SWAPDEFAULT, and disk = $DISKDEFAULT."
 	echo "REMEMBER: If you're going to do this, make sure you have a "
 	echo "kernel and grub installed in your VNFS!"
 	echo
@@ -31,31 +30,18 @@ if [ -z "$DISK" ]; then
 fi
 
 BOOTP=$DISK"1"
-ROOTP=$DISK"2"
-SWAPP=$DISK"3"
-
-echo
-echo "Configuring stateful provisioning for $NODE, using :"
-echo "    filesystems=\"mountpoint=/boot:dev=$BOOTP:type=ext4:size=500,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=ext4:dev=$ROOTP:size=fill\""
-echo "    diskformat=$ROOTP,$SWAPP"
-echo "    diskpartition=$DISK"
-echo "    bootloader=$DISK"
-echo
+SWAPP=$DISK"2"
+ROOTP=$DISK"3"
 
 wwsh << EOF
 quiet
-object $NODE -s filesystems="mountpoint=/boot:dev=$BOOTP:type=ext4:size=500,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=ext4:dev=$ROOTP:size=fill"
-object $NODE -s diskformat=$ROOTP,$SWAPP,$BOOTP
+object $NODE -s filesystems="mountpoint=/boot:dev=$BOOTP:type=xfs:size=350,mountpoint=swap,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=xfs:dev=$ROOTP:size=fill"
+object $NODE -s diskformat=$BOOTP,$SWAPP,$ROOTP
 object $NODE -s diskpartition=$DISK
 object $NODE -s bootloader=$DISK
 EOF
 
-echo
-echo
-echo "-----------------------------------------------------"
-echo " $NODE has been set to boot from $DISK, with $ROOTP as "
-echo " the / partition and $SWAPP as swap."
-echo
+
 echo " Make sure the VNFS for $NODE has a kernel and grub  "
 echo " installed!"
 echo " After you've provisioned $NODE, remember to do: "
