@@ -2,5 +2,5 @@
 
 ## reboot all compute nodes
 echo rebooting all compute nodes ...
-sleep 3
+sleep 4
 pdsh -w `grep eth0 /etc/hosts | awk '{print $1}' | paste -d, -s ` reboot
