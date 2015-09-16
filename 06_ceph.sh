@@ -7,4 +7,4 @@ yum --tolerant --installroot /var/chroots/centos-7 -y install ceph --disablerepo
 
 chroot /var/chroots/centos-7/ systemctl enable ntpd
 chroot /var/chroots/centos-7/ systemctl disable firewalld
-chroot /var/chroots/centos-7/ chkconfig ceph on
+##chroot /var/chroots/centos-7/ chkconfig ceph on
