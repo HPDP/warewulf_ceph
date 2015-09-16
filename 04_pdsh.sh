@@ -1,5 +1,5 @@
 #!/bin/bash
-
+## install pdsh
 cd ~/
 git clone https://code.google.com/p/pdsh/
 cd pdsh

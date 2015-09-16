@@ -20,7 +20,7 @@ chmod 0440 /etc/sudoers.d/ceph
 sed -i s'/Defaults    requiretty/Defaults:ceph    !requiretty'/g /etc/sudoers
 
 ## ceph repo, update all nodes
-rpm -Uhv http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-0.el7.noarch.rpm
+rpm -Uhv http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-1.el7.noarch.rpm
 
 yum -y update 
 yum -y install epel-release
@@ -29,11 +29,12 @@ yum -y install ceph --disablerepo=epel
 
 chkconfig ceph on
 
+## these are for warewulf
 yum -y group install 'Development tools' 
 yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz dhcp
 yum -y install libselinux-devel libacl-devel libattr-devel pdsh
 
-service enable dhcpd rpcbind nfs-server
+##systemctl enable dhcpd rpcbind nfs-server
 
 reboot
 

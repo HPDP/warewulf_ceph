@@ -1,5 +1,5 @@
 #!/bin/bash
-
+## set up a ww stateless boot first to record all nodes
 mysqladmin -u root password 'password'
 
 ## warewulf mysql set up

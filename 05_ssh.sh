@@ -9,6 +9,9 @@ cp /etc/ssh/ssh_known_hosts /var/chroots/centos-7/etc/ssh
 
 ## install nptd to comupte nodes to sync time with master
 yum --tolerant --installroot /var/chroots/centos-7 -y install ntp
+
+## install ww monitor
+yum --tolerant --installroot /var/chroots/centos-7 -y install ~/rpmbuild/RPMS/x86_64/warewulf-monitor-0*.rpm
 yum --tolerant --installroot /var/chroots/centos-7 -y install ~/rpmbuild/RPMS/x86_64/warewulf-monitor-node*.rpm
 
 sed -i '/.pool.ntp.org/c\server 172.16.2.250' /var/chroots/centos-7/etc/ntp.conf
