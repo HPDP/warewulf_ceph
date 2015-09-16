@@ -24,4 +24,18 @@ echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
 sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
 
 wwinit ALL
+wwmkchroot centos-7 /var/chroots/centos-7
+wwvnfs --chroot /var/chroots/centos-7
+
+echo @
+echo @
+echo @
+echo "warewulf scanning and adding nodes"
+echo "please set compute nodes to PXE boot and bring up them one by one in order"
+echo "when all nodes are recorded stop(ctl-c) this script"
+echo @
+echo @
+echo @
+sleep 3
+wwnodescan --netdev=enps03 --ipaddr=172.16.0.1 --netmask=255.255.0.0 --vnfs=centos-7 --bootstrap=`uname -r` --groups=compute c[001-999]
 

@@ -12,7 +12,7 @@ fi
 
 ## if set to NORMAL/UNDEF, will re-provision the node
 wwsh << EOF
-object modify -s bootlocal=EXIT $NODE
+object modify -s bootlocal=1 $NODE
 EOF
 
 

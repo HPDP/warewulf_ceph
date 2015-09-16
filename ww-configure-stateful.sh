@@ -35,11 +35,11 @@ SWAPP=$DISK"2"
 ROOTP=$DISK"3"
 
 wwsh << EOF
-object modify -s bootlocal=UNDEF $NODE
+object modify -s bootlocal=0 $NODE
 object modify -s bootloader=$DISK $NODE
 object modify -s diskpartition=$DISK $NODE
-object modify -s diskformat=$BOOTP,$SWAPP,$ROOTP $NODE
-object modify -s FILESYSTEMS="mountpoint=/boot:dev=$BOOTP:type=xfs:size=350,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=xfs:dev=$ROOTP:size=fill" $NODE
+object modify -s diskformat=$BOOTP,$ROOTP $NODE
+object modify -s FILESYSTEMS="mountpoint=/boot:dev=$BOOTP:type=xfs:size=500,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:dev=$ROOTP:type=xfs:size=fill" $NODE
 EOF
 
 echo
