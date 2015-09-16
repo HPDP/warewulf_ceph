@@ -1,6 +1,0 @@
-#!/bin/bash
-
-## reboot all compute nodes
-echo rebooting all compute nodes ...
-sleep 4
-pdsh -w `grep enps03 /etc/hosts | awk '{print $1}' | paste -d, -s ` reboot
