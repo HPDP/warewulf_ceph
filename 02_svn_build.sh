@@ -34,7 +34,8 @@ ln -s /usr/lib64/libjson-c.so.2 /usr/lib64/libjson-c.so
 ln -s /usr/lib64/libsqlite3.so.0 /usr/lib64/libsqlite3.so
 yum -y install json-c-devel json-devel sqlite-devel
 build_it $WW_DIR/monitor $BUILD_DIR
-yum -y install $RPM_DIR/x86_64/warewulf-monitor*.rpm
+yum -y install $RPM_DIR/x86_64/warewulf-monitor-0*.rpm
+yum -y install $RPM_DIR/x86_64/warewulf-monitor-cl*.rpm
 
 #build_it $WW_DIR/ipmi $BUILD_DIR
 #yum -y install $RPM_DIR/x86_64/warewulf-ipmi*.rpm
