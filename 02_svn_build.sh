@@ -41,5 +41,7 @@ yum -y install $RPM_DIR/x86_64/warewulf-monitor*.rpm
 
 rpm -qa | grep warewulf
 
+sleep 5
+
 logout
 
