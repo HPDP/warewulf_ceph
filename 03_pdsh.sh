@@ -3,6 +3,8 @@
 cd ~/
 git clone https://code.google.com/p/pdsh/
 cd pdsh
-./configure
+./configure --with-ssh
 make
 make install
+
+echo "export PDSH_RCMD_TYPE=ssh" >> ~/.bashrc
