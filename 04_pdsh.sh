@@ -14,5 +14,5 @@ export WCOLL='/etc/pdsh/machines'
 EOF
 
 mkdir -p /etc/pdsh
-grep enps03 /etc/hosts | awk '{print $3}' > /etc/pdsh/machines 
+grep eth0 /etc/hosts | awk '{print $3}' > /etc/pdsh/machines 
 exec -l $SHELL

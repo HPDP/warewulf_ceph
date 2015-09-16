@@ -37,5 +37,5 @@ echo @
 echo @
 echo @
 sleep 3
-wwnodescan --netdev=enps03 --ipaddr=172.16.0.1 --netmask=255.255.0.0 --vnfs=centos-7 --bootstrap=`uname -r` --groups=compute c[001-999]
+wwnodescan --netdev=eth0 --ipaddr=172.16.0.1 --netmask=255.255.0.0 --vnfs=centos-7 --bootstrap=`uname -r` --groups=compute c[001-999]
 
