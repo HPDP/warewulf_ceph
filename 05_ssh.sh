@@ -18,6 +18,6 @@ sed -i '/.pool.ntp.org/c\server 172.16.2.250' /var/chroots/centos-7/etc/ntp.conf
 
 chroot /var/chroots/centos-7/ systemctl enable ntpd
 chroot /var/chroots/centos-7/ chkconfig collector on
-sed -i 's+127.0.0.1+172.16.2.250+g' /var/chroots/centos-7/etc/warewulf/monitor.conf
+##sed -i 's+127.0.0.1+172.16.2.250+g' /var/chroots/centos-7/etc/warewulf/monitor.conf
 
 

@@ -14,5 +14,3 @@ wwvnfs -y --chroot /var/chroots/centos-7
 
 ## this will statefully provision the nodes
 pdsh reboot
-
-./ww-disable-stateful.sh c[001-004]
