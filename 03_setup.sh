@@ -20,8 +20,8 @@ chmod 0600 ~/.my.cnf
 sed -i '/network device/c\network device = enp0s8' /etc/warewulf/provision.conf
 
 ## edit /etc/warewulf/vnfs.conf, uncomment hybridpath= ...
-echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
-sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
+##echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
+##sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
 
 wwinit ALL
 wwmkchroot centos-7 /var/chroots/centos-7
