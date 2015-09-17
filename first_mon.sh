@@ -24,11 +24,11 @@ mon addr = 172.16.0.1
 
 [mon.c002]
 host = c002
-mon addr = 172.16.0.2
+mon addr = 172.16.0.2:6789
 
 [mon.c003]
 host = c003
-mon addr = 172.16.0.3
+mon addr = 172.16.0.3:6789
 EOF
 
 ## generate keyrings
