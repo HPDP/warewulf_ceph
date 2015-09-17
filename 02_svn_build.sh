@@ -46,7 +46,4 @@ rpm -qa | grep warewulf
 chkconfig aggregator on
 service aggregator start
 sed -i 's+127.0.0.1+172.16.2.250+g' /etc/warewulf/monitor.conf
-sleep 5
-
-exit
-
+exec -l $SHELL
