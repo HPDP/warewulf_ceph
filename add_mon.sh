@@ -1,5 +1,7 @@
 #!/bin/bash
 
+service ceph restart
+
 node=$1
 nodeip=$2
 
