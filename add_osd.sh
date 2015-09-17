@@ -3,6 +3,7 @@
 ## cluster uuid
 aid=`grep fsid /etc/ceph/ceph.conf | awk '{print $3}'`
 ## assuming you have sdb as SSD disk for journal and sdc/d/e 3 disks for data
+mkdir -p /var/lib/ceph/osd
 
 ## partition the ssd disk for journal
 parted -s /dev/sdb mklabel gpt
