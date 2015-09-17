@@ -11,17 +11,17 @@ parted -s /dev/sdb mkpart primary 34% 66%
 parted -s /dev/sdb mkpart primary 67% 100%
 
 ## partition the osd data disk, ceph-disk does it for you
-#parted -s /dev/sdc mklabel gpt
-#parted -s /dev/sdc mkpart primary xfs 0% 100%
-#mkfs.xfs /dev/sdc -f
+parted -s /dev/sdc mklabel gpt
+parted -s /dev/sdc mkpart primary xfs 0% 100%
+mkfs.xfs /dev/sdc -f
 
-#parted -s /dev/sdd mklabel gpt
-#parted -s /dev/sdd mkpart primary xfs 0% 100%
-#mkfs.xfs /dev/sdd -f
+parted -s /dev/sdd mklabel gpt
+parted -s /dev/sdd mkpart primary xfs 0% 100%
+mkfs.xfs /dev/sdd -f
 
-#parted -s /dev/sde mklabel gpt
-#parted -s /dev/sde mkpart primary xfs 0% 100%
-#mkfs.xfs /dev/sde -f
+parted -s /dev/sde mklabel gpt
+parted -s /dev/sde mkpart primary xfs 0% 100%
+mkfs.xfs /dev/sde -f
 
 ceph-disk prepare --cluster ceph --cluster-uuid $aid --fs-type xfs /dev/sdc /dev/sdb1
 ceph-disk prepare --cluster ceph --cluster-uuid $aid --fs-type xfs /dev/sdd /dev/sdb2
