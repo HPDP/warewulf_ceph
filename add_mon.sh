@@ -10,6 +10,7 @@ ceph auth get mon. -o /tmp/$node/monkeyring
 ceph mon getmap -o /tmp/$node/monmap
 ceph-mon -i $node --mkfs --monmap /tmp/$node/monmap --keyring /tmp/$node/monkeyring
 
+## restart ceph is important !!!!
 service ceph restart
 ceph mon add $node $nodeip:6789
 
