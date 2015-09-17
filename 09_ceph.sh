@@ -6,8 +6,9 @@ cp add_osd.sh /home/ceph
 sleep 3
 
 ssh c001 "/home/ceph/first_mon.sh"
-pdsh cp -fr /home/ceph/ceph /etc
 sleep 5
+pdsh cp -fr /home/ceph/ceph /etc
+cp -fr /home/ceph/ceph /etc
 
 ssh c002 "/home/ceph/add_mon.sh c002 172.16.0.2"
 sleep 5
