@@ -39,6 +39,12 @@ ceph-authtool /tmp/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin
 
 ## /home is exported, pop /etc/ceph to all nodes
 cp -r /etc/ceph /home/ceph/
+sleep 3
 pdsh cp -r /home/ceph/ceph /etc
 
+cp first_mon.sh /home/ceph
+cp add_mon.sh /home/ceph
+ssh c001 "/home/ceph/first_mon.sh"
+ssh c002 "/home/ceph/add_mon.sh c002 172.16.0.2"
+ssh c003 "/home/ceph/add_mon.sh c003 172.16.0.3"
 
