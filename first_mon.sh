@@ -1,8 +1,8 @@
 #!/bin/bash
 
 aid=`grep fsid /etc/ceph/ceph.conf | awk '{print $3}'`
-node=c001
-nodeip=172.16.0.1
+node=$1
+nodeip=$2
 ## add the first mon
 monmaptool --create --add $node $nodeip --fsid $aid /tmp/monmap
 mkdir -p /var/lib/ceph/mon/$node

@@ -34,7 +34,5 @@ yum -y group install 'Development tools'
 yum -y install wireshark tcpdump perl-DBD-MySQL mariadb nfs-utils ntp perl-Term-ReadLine-Gnu tftp tftp-server pigz dhcp
 yum -y install libselinux-devel libacl-devel libattr-devel pdsh
 
-##systemctl enable dhcpd rpcbind nfs-server
-
 reboot
 

@@ -10,6 +10,7 @@ cp -f /etc/shadow /var/chroots/centos-7/etc
 
 wwvnfs -y --chroot /var/chroots/centos-7
 
+## node swapsize os-disk
 ./ww-configure-stateful.sh c[001-004] 500 sda
 
 ## this will statefully provision the nodes
