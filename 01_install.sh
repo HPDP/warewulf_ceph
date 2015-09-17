@@ -27,7 +27,7 @@ yum -y install epel-release
 yum -y install snappy leveldb gdisk python-argparse gperftools-libs
 yum -y install ceph --disablerepo=epel
 
-##chkconfig ceph on
+chkconfig ceph on
 
 ## these are for warewulf
 yum -y group install 'Development tools' 
