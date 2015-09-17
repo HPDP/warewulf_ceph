@@ -45,6 +45,8 @@ pdsh cp -r /home/ceph/ceph /etc
 cp first_mon.sh /home/ceph
 cp add_mon.sh /home/ceph
 ssh c001 "/home/ceph/first_mon.sh"
+sleep 3
+
 ssh c002 "/home/ceph/add_mon.sh c002 172.16.0.2"
 ssh c003 "/home/ceph/add_mon.sh c003 172.16.0.3"
 
