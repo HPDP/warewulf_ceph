@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## set up stateful provision, OS is ext4, OSD will use xfs
-yum --tolerant --installroot /var/chroots/centos-7 -y install kernel grub2
+yum --tolerant --installroot /var/chroots/centos-7 -y install kernel grub2 yum
 
 ## so the nodes have root passwd set
 cp -f /etc/passwd /var/chroots/centos-7/etc
