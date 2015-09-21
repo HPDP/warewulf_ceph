@@ -39,7 +39,7 @@ object modify -s bootlocal= $NODE
 object modify -s bootloader=$DISK $NODE
 object modify -s diskpartition=$DISK $NODE
 object modify -s diskformat=$BOOTP,$ROOTP $NODE
-object modify -s FILESYSTEMS="mountpoint=/boot:dev=$BOOTP:type=ext4:size=500,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:dev=$ROOTP:type=ext4:size=fill" $NODE
+object modify -s FILESYSTEMS="mountpoint=/boot:dev=$BOOTP:type=ext4:size=500,mountpoint=swap:dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:dev=$ROOTP:type=ext4:size=fill" $NODE
 EOF
 
 echo
