@@ -9,8 +9,8 @@ fsid = $aid
 public network = 172.16.0.0/24
 
 osd pool default min size = 1
-osd pool default pg num = 512
-osd pool default pgp num = 512
+osd pool default pg num = 256
+osd pool default pgp num = 256
 osd journal size = 1024
 
 [mon]
