@@ -20,3 +20,11 @@ ssh c002 "/home/ceph/add_osd.sh"
 sleep 5
 ssh c003 "/home/ceph/add_osd.sh"
 
+sleep 20
+ceph osd pool set rbd pg_num 256
+sleep 20
+ceph osd pool set rbd pgp_num 256
+sleep 20
+
+ceph -s
+
