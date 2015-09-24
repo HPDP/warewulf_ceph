@@ -12,6 +12,7 @@ systemctl disable firewalld
 ## ntp
 yum install -y ntp ntpdate ntp-doc 
 systemctl enable ntpd
+systemctl enable ntpdate
 
 useradd ceph
 echo bwv988 | passwd ceph --stdin
