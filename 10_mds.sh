@@ -26,6 +26,7 @@ sleep 3
 ceph -s
 ceph mds stat
 
+echo
 echo ---- creating ceph FS ----
 echo 
 ceph osd pool create cephfs_data 256
@@ -34,6 +35,7 @@ ceph fs new cephfs cephfs_metadata cephfs_data
 ceph fs ls
 ceph mds stat
 
+echo
 echo ---- mounting cephFS with kernel driver ----
 echo
 grep key /etc/ceph/ceph.client.admin.keyring | awk '{print $3}' > /etc/ceph/adminkey
