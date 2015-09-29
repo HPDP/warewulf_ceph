@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd ~/
+git clone https://code.google.com/p/pdsh/
+cd pdsh
+./configure --with-ssh
+make
+make install
+
+git clone https://code.google.com/p/pdsh/
