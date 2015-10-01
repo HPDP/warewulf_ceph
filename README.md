@@ -9,4 +9,4 @@
 
 *ceph hammer
 
-*3 storage nodes with 5 disks on each, 1*OS + 1*journal + 3*OSD
+*three storage nodes with 5 disks on each, 1*OS + 1*journal + 3*OSD
