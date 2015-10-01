@@ -26,7 +26,7 @@ rpm -Uhv http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-1.el7.noarch.rpm
 yum -y update 
 yum -y install epel-release
 yum -y install snappy leveldb gdisk python-argparse gperftools-libs attr
-yum -y install ceph --disablerepo=epel
+yum -y install ceph ceph-deploy --disablerepo=epel
 
 chkconfig ceph on
 
