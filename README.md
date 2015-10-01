@@ -3,8 +3,10 @@
 
 *warewulf 3.6.99 from svn
 
-*xfs not yet working, OS using ext4, OSD will use xfs
+*OS using ext4, OSD using xfs
 
 *stateful provision
 
-*ceph v0.94.3
+*ceph hammer
+
+*3 storage nodes with 5 disks on each, 1*OS + 1*journal + 3*OSD
