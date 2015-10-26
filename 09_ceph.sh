@@ -30,7 +30,7 @@ sleep 200
 ceph osd pool set rbd pgp_num 256
 echo waiting --------
 echo
-sleep 200
+sleep 100
 
 ceph -s
 

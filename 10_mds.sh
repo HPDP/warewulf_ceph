@@ -21,7 +21,7 @@ ssh c001 "mkdir -p /var/lib/ceph/mds/mds.0;
 ceph auth get-or-create mds.0 mds 'allow ' osd 'allow *' mon 'allow rwx' > /var/lib/ceph/mds/mds.0/mds.0.keyring; 
 service ceph start mds.0"
 
-sleep 3
+sleep 10
 
 ceph -s
 ceph mds stat
