@@ -17,10 +17,10 @@ for i in `seq -w 001 003`; do
     echo creating node: $node;
 
     vboxmanage createvm --name $node --ostype RedHat_64 --register;
-    vboxmanage modifyvm wulf --memory 1024 
-    vboxmanage modifyvm wulf --nic1 intnet --intnet1 eth1
-    vboxmanage storagectl wulf --name "SATA" --add sata --hostiocache on --bootable on
-    vboxmanage modifyvm wulf --boot1 net --boot2 disk
+    vboxmanage modifyvm $node --memory 1024 
+    vboxmanage modifyvm $node --nic1 intnet --intnet1 eth1
+    vboxmanage storagectl $node --name "SATA" --add sata --hostiocache on --bootable on
+    vboxmanage modifyvm $node --boot1 net --boot2 disk
     for d in `seq 1 5`; do
 	diskname=c$i-$d.vdi;
 	vboxmanage createmedium disk --filename $diskname --size 8192
