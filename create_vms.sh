@@ -11,6 +11,7 @@ vboxmanage storagectl wulf --name "SATA" --add sata --hostiocache on --bootable 
 vboxmanage createmedium disk --filename wulf.vdi --size 8192
 vboxmanage storageattach wulf --storagectl "SATA" --port 0 --device 0 --type hdd --medium wulf.vdi
 vboxmanage modifyvm wulf --boot1 disk
+VBoxManage modifyvm wulf --natpf1 "guestssh,tcp,,2222,,22"
 
 for i in `seq -w 001 003`; do
     node=c$i;
