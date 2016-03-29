@@ -10,9 +10,8 @@ sed -i 's+=enforcing+=disabled+g' /etc/selinux/config
 systemctl disable firewalld
 
 ## ntp
-yum install -y ntp ntpdate ntp-doc 
+yum install -y ntp 
 systemctl enable ntpd
-systemctl enable ntpdate
 
 ## ceph repo, update all nodes
 rpm -Uhv http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-1.el7.noarch.rpm
