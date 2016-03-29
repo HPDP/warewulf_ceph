@@ -14,12 +14,6 @@ yum install -y ntp ntpdate ntp-doc
 systemctl enable ntpd
 systemctl enable ntpdate
 
-useradd ceph
-echo bwv988 | passwd ceph --stdin
-echo "ceph ALL = (root) NOPASSWD:ALL" | tee /etc/sudoers.d/ceph
-chmod 0440 /etc/sudoers.d/ceph
-sed -i s'/Defaults    requiretty/Defaults:ceph    !requiretty'/g /etc/sudoers
-
 ## ceph repo, update all nodes
 rpm -Uhv http://ceph.com/rpm-hammer/el7/noarch/ceph-release-1-1.el7.noarch.rpm
 
